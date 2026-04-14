@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class ConnectorApplication
 
 fun main(args: Array<String>) {
-	runApplication<ConnectorApplication>(*args)
+    runApplication<ConnectorApplication>(*args)
 }
