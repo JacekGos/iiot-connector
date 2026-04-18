@@ -49,6 +49,9 @@ ktlint {
         exclude("**/generated/**")
         include("**/*.kt")
     }
+    reporters {
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
+    }
 }
 
 detekt {
