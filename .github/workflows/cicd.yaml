@@ -15,6 +15,7 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
       - run: ./gradlew ktlintCheck detekt
 
   test:
@@ -27,6 +28,7 @@ jobs:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
       - run: ./gradlew test
 
   build:
@@ -39,4 +41,5 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
       - run: ./gradlew build
