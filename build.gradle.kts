@@ -62,3 +62,4 @@ tasks.named("check") {
     // make sure check task runs both tools
     dependsOn("ktlintCheck", "detekt")
 }
+
