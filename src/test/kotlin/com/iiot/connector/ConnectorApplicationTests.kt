@@ -6,9 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest
 class ConnectorApplicationTests {
     @Test
+    fun contextLoads() {
+        error("CI TEST FAILURE")
+    }
 //    fun contextLoads() {
 //    }
-    fun contextLoads() {
-        throw RuntimeException("CI TEST FAILURE")
-    }
 }
