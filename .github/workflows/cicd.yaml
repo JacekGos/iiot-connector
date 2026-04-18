@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  cd:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,6 +18,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Build
         run: ./gradlew build
