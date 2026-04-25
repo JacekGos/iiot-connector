@@ -15,6 +15,7 @@ A Kotlin service responsible for all industrial protocol connectivity — OPC-UA
     - [Resetting Volumes](#resetting-volumes)
     - [Connecting to Services](#connecting-to-services)
 - [Running the Connector Service Locally](#running-the-connector-service-locally)
+- [Kafka Topics](#kafka-topics)
 
 ---
 
@@ -225,3 +226,44 @@ The service expects the following to be reachable:
 - Core Platform at `http://localhost:8081` (for startup config fetch — must be running separately)
 
 Local overrides can be set in `src/main/resources/application-local.yml`.
+
+### Kafka Topics
+
+Three topics are created automatically on Redpanda startup via the `redpanda-init` container.
+
+| Topic | Partitions | Cleanup | Retention |
+|---|---|---|---|
+| `raw-events` | 8 | delete | 24h |
+| `config-changes` | 4 | compact | forever (latest per key) |
+| `connector-status` | 4 | delete | 24h |
+
+#### Produce and consume test messages
+
+**`raw-events`**
+```bash
+# produce
+docker exec -it redpanda rpk topic produce raw-events --brokers localhost:9092
+
+# consume
+docker exec -it redpanda rpk topic consume raw-events --brokers localhost:9092
+```
+
+**`config-changes`**
+```bash
+# produce
+docker exec -it redpanda rpk topic produce config-changes --brokers localhost:9092
+
+# consume
+docker exec -it redpanda rpk topic consume config-changes --brokers localhost:9092
+```
+
+**`connector-status`**
+```bash
+# produce
+docker exec -it redpanda rpk topic produce connector-status --brokers localhost:9092
+
+# consume
+docker exec -it redpanda rpk topic consume connector-status --brokers localhost:9092
+```
+
+When producing, type your message and hit `Enter` to send, `Ctrl+C` to stop.

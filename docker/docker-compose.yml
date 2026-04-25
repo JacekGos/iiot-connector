@@ -33,6 +33,23 @@ services:
     networks:
       - iiot-net
 
+  redpanda-init:
+    image: redpandadata/redpanda:latest
+    container_name: redpanda-init
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        rpk topic create raw-events --brokers redpanda:9092 --partitions 8 --topic-config retention.ms=86400000 --if-not-exists
+        rpk topic create config-changes --brokers redpanda:9092 --partitions 4 --topic-config cleanup.policy=compact --if-not-exists
+        rpk topic create connector-status --brokers redpanda:9092 --partitions 4 --topic-config retention.ms=86400000 --if-not-exists
+    restart: "no"
+    networks:
+      - iiot-net
+
   redpanda-console:
     image: redpandadata/console:latest
     container_name: redpanda-console
