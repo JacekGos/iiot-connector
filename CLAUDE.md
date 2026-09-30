@@ -1,5 +1,9 @@
 # iiot-connector
 
+## Approval
+
+Never make ANY change without first stating exactly what you're about to do and waiting for explicit confirmation. This is not limited to GitHub actions — it covers everything: editing or creating a file, running a build/test/lint command, installing a dependency, running any shell command that changes state, git operations (commit, push, branch, checkout), and GitHub actions (issues, milestones, labels, commits, branches, pushes, PRs). This applies even when a skill's steps say to "create", "implement", "commit", or "run" something — describe the action, then wait for a yes before executing it. Read-only actions (viewing a file, listing issues, searching, running tests to check status) don't need approval — only anything that changes state does.
+
 Kotlin service responsible for all industrial protocol connectivity (OPC-UA, MQTT). Publishes raw data to Kafka; 
 consumes desired connector config from Kafka; has no direct dependency on core-platform except a one-time startup REST fetch.
 
