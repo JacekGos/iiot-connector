@@ -8,6 +8,7 @@ A Kotlin service responsible for all industrial protocol connectivity — OPC-UA
 
 - [Local Development Infrastructure](#local-development-infrastructure)
 - [Running the Connector Service Locally](#running-the-connector-service-locally)
+- [Docker Image](#docker-image)
 
 ---
 
@@ -38,3 +39,19 @@ The service expects the following to be reachable:
 - Core Platform at `http://localhost:8081` (for startup config fetch — must be running separately)
 
 Local overrides can be set in `src/main/resources/application-local.yml`.
+
+---
+
+## Docker Image
+
+Build from the project root:
+
+```bash
+docker build -f docker/Dockerfile -t connector-service .
+```
+
+Run:
+
+```bash
+docker run --rm -p 8080:8080 connector-service
+```
