@@ -1,0 +1,10 @@
+image:
+  pullPolicy: Always
+resources:
+  requests: { cpu: 100m, memory: 192Mi }
+  limits:   { cpu: "1", memory: 768Mi }
+#config:
+#  LOGGING_LEVEL_COM_IIOT_CONNECTOR: DEBUG
+probes:
+  liveness:  { initialDelaySeconds: 60, failureThreshold: 5 }
+  readiness: { initialDelaySeconds: 30 }
