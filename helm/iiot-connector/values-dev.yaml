@@ -2,7 +2,7 @@ image:
   pullPolicy: Always
 resources:
   requests: { cpu: 100m, memory: 192Mi }
-  limits:   { cpu: "1", memory: 768Mi }
+  limits:   { cpu: 500m, memory: 768Mi }
 #config:
 #  LOGGING_LEVEL_COM_IIOT_CONNECTOR: DEBUG
 probes:
