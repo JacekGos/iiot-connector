@@ -11,9 +11,9 @@ RUN ./gradlew --no-daemon bootJar \
 
 # ---- Runtime stage ----
 FROM eclipse-temurin:21-jre-alpine
-RUN addgroup -S app && adduser -S -G app app
+RUN addgroup -S -g 1000 app && adduser -S -u 1000 -G app app
 WORKDIR /app
 COPY --from=build --chown=app:app /workspace/app.jar app.jar
-USER app
+USER 1000:1000
 EXPOSE 8080
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-jar", "/app/app.jar"]

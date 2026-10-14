@@ -1,0 +1,6 @@
+apiVersion: v2
+name: iiot-connector
+description: IIoT Connector Service - Edge connectivity
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
