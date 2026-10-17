@@ -1,5 +1,5 @@
 image:
-  tag: latest # overwritten by the Deploy workflow (.github/workflows/deploy.yaml)
+  tag: e961dc7a9f3d72a35296ebea52ffb631ab531bca
   pullPolicy: Always
 resources:
   requests: { cpu: 100m, memory: 192Mi }
