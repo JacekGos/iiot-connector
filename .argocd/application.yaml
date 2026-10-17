@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: iiot-connector
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JacekGos/iiot-connector.git
+    targetRevision: main
+    path: helm/iiot-connector
+    helm:
+      valueFiles:
+        - values-dev.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: iiot-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
