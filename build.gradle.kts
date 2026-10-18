@@ -5,6 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 group = "com.iiot"
@@ -25,6 +26,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
